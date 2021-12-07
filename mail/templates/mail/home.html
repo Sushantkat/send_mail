@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="global-container">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd">
+            <a class="navbar-brand" href=""> Home </a>
+        </nav>
+        <div class="container mt-4 mb-4">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div
+                        class="card bg-white text-secondary align-items-center text-center"
+                        >
+                        <div class="card-body">
+                            <h5 class="card-title .bg-primary">Input Form</h5>
+                            <p class="card-text">
+                                {% if errors %}
+                            <h3>{{ errors }}</h3>
+                            {% endif %}
+                            {% if message %}
+                            <h3>{{ message }}</h3>
+                            {% endif %}
+                            <form enctype="multipart/form-data" method="post" action="{% url 'mail:save_send_email' %}">
+                                {% csrf_token %}
+                                Email <input type="email" name="email"><br><br> 
+                                Image <input type="file" name="image" accept="image/*"><br><br> 
+                                <input class="btn btn-dark"type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
